@@ -1,51 +1,45 @@
-import React from 'react';
-import Child from './Child'
-import './App.css';
+import React from "react";
+import "./App.css";
 
 class App extends React.Component {
-
   constructor() {
-    console.log('App Constructor');
     super();
-    <Child />
-    console.log(document.getElementById('myBtn'));
     this.state = {
-      op: 0
-    }
-
+      op: 0,
+      value1: 1,
+      value2: 2,
+    };
   }
 
-  componentDidMount() {
-    console.log(document.getElementById('myBtn'));
-    this.setState({
-      op: 20
-    });
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     op: 20,
+  //   });
+  // }
 
-  componentDidUpdate(){
-    console.log('did update life cycle');
+  componentDidUpdate() {
+    console.log("did update life cycle");
   }
-
 
   myMethod = () => {
-    console.log('Its My Method')
     this.setState({
-      op: 7
+      op: this.state.value1 + this.state.value2,
     });
-  }
+  };
 
   render() {
-    console.log('App Render');
     return (
       <>
-        <div style={{ height: '100%', width: '100%', position: 'fixed' }}>
-          <button id="myBtn" onClick={this.myMethod.bind(this)}>Sample button</button>
-          <div>App Div</div>
+        <div style={{ height: "100%", width: "100%", position: "fixed" }}>
+          <div>{this.state.value1}</div>
+          <div>{this.state.value2}</div>
+          <button id="myBtn" onClick={this.myMethod.bind(this)}>
+            Click Me
+          </button>
           <div>{this.state.op}</div>
         </div>
-
       </>
-    )
+    );
   }
 }
 

@@ -1,0 +1,13 @@
+.sign {
+  height: 150px;
+  width: 190px;
+  margin: 200px 100px 200px 600px;
+  border: 1px #ccc solid;
+  padding: 20px;
+  background-color: aqua;
+}
+
+.sign input {
+  padding: 5px;
+  margin: 5px;
+}
