@@ -1,34 +1,28 @@
 import React from "react";
 
+
 class Child extends React.Component {
-  constructor(props){
-    super(props)
+  constructor(){
+    super()
     this.state={
-      dis : this.props.pass
+      edit: false
     }
   }
-
-    showing = () => {
-      this.setState({
-        display: "block",
-      });
-      var data = "<div>";
-      this.state.dis.forEach( (item)=> {
-        data = data + "<div>" + item.fname + "</div>";
-      });
-  
-      data = data + "</div>";
-  
-      document.getElementById("div").innerHTML = data;
-    };
-  
-render(){
-  return(
-<>
-<div> <button id="show" onClick={this.showing}>show  </button></div>
-<div id="div" style={{ display: this.state.display }}></div>
-</> )
-}
-
+  render() {
+    return (
+      <>
+        {this.props.pass.map((item, index) => {
+          return (
+            <div key={item + index}>
+              {item.fname}
+              <button onClick={() => {document.getElementById("fname").value = item.fname;
+                                       this.setState({edit: true})
+            }}>edit</button>
+              </div>
+          );
+        })}
+      </>
+    );
+  }
 }
 export default Child;
