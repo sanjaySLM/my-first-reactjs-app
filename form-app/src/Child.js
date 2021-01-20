@@ -1,26 +1,36 @@
 import React from "react";
-
+import './index.css';
 
 class Child extends React.Component {
-  constructor(){
-    super()
-    this.state={
-      edit: false
-    }
+  constructor() {
+    super();
+    this.state = {
+      saveEdited: false,
+    };
   }
+
   render() {
     return (
       <>
-        {this.props.pass.map((item, index) => {
+      <table>
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        {this.props.passArr.map((item, index) => {
           return (
-            <div key={item + index}>
-              {item.fname}
-              <button onClick={() => {document.getElementById("fname").value = item.fname;
-                                       this.setState({edit: true})
-            }}>edit</button>
-              </div>
-          );
+            <tr key={item + index}>
+              <td> {item.fname}</td>
+              <td>{item.lname}</td>
+            <td><button id="editb" onClick={() => {this.props.passEditfunc(index,item.fname,item.lname) }}> Edit</button></td>
+            </tr> );
         })}
+        </tbody>
+        </table>
       </>
     );
   }
