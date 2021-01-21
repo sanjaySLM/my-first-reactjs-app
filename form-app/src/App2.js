@@ -6,34 +6,28 @@ class App extends React.Component {
     super();
     this.state = {
       array: [],
-      fname:""
     };
   }
   saving = () => {
-    let obj = { fname: this.state.fname };
+    let obj = { fname: document.getElementById("fname").value };
 
     let newarray = this.state.array;
     newarray.push(obj);
     this.setState({ array: newarray });
-    this.setState({fname:""})
-    console.log(this.state.array)
 
+    var elements = document.getElementsByTagName("input");
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].value = "";
+    }
   };
-  
-
-update = (u) => {
-this.setState({fname:u.target.value})
-}
-
-
-
 
   render() {
+    console.log(this.state.array);
     return (
       <div>
         <h1>contact Form</h1>
         <label>FIRST NAME:</label>
-        <input type="text" id="fname"  value={this.state.fname} onChange={this.update} /> <br />
+        <input type="text" id="fname"  /> <br />
         <div>
           <button id="save" onClick={this.saving}>
             save

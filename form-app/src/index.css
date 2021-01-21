@@ -32,6 +32,8 @@ table {
   width: 200px;
 }
 #inputBoxDiv {
-  margin: 10px 10px 10px 9px;
+  margin: 10px 10px 10px 400px;
   background-color: mistyrose;
+  width: 40%;
+  padding: 20px 2px 20px 2px;
 }
