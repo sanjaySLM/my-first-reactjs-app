@@ -13,18 +13,18 @@ class App extends React.Component {
     this.childRef= new createRef();
   }
   saving = () => {
-    let newarray = this.state.array;
+    this.newArray = this.state.array;
 
     if(this.state.pos===-1 && this.state.fname !=="" && this.state.lname !==""){
     let obj = { fname: this.state.fname ,lname: this.state.lname  };
-    newarray.push(obj);
+    this.newArray.push(obj);
     console.log(this.state.array)
-    this.setState({ array: newarray,fname:"",lname:"" });
+    this.setState({ array: this.newArray,fname:"",lname:"",num :1 });
    }
    else if(this.state.fname !=="" && this.state.lname !=="") {
-      newarray[this.state.pos].fname=this.state.fname
-      newarray[this.state.pos].lname=this.state.lname
-      this.setState({array: newarray,fname:"",lname:"",pos:-1})
+    this.newArray[this.state.pos].fname=this.state.fname
+    this.newArray[this.state.pos].lname=this.state.lname
+      this.setState({array: this.newArray,fname:"",lname:"",pos:-1})
 }
 else{alert("Enter the Data")}
 }
@@ -38,6 +38,11 @@ edit =(i,fname,lname)=>{
     pos:i,
 })
 }
+delete=(dindex)=>{
+    this.newArray.splice(dindex,1)
+    this.setState({array:this.newArray})
+}
+
  render() {
     return (
       <div >
@@ -48,15 +53,16 @@ edit =(i,fname,lname)=>{
         <label>LAST NAME:</label>
         <input type="text" id="lname"  value={this.state.lname} onChange={this.updatel} /> <br />
         <button id="save" className="sty" onClick={this.saving}>save</button>
-        <button id="show" className="sty" onClick={() => { this.setState({ num: 1 });}}>show</button>
-        <button id="hide" className="sty" onClick={() => {this.setState({ num: 0 });}}> hide</button>
+        <button id="show" className="sty" onClick={() => { this.setState({ show: 2 });}}>show</button>
+        <button id="hide" className="sty" onClick={() => {this.setState({ show: 0 });}}> hide</button>
         </div>
 
-        {this.state.num === 1 && 
+        {this.state.show === 2 && this.state.num === 1 && 
         <Child 
         ref={this.childRef}
         passArr={this.state.array} 
-        passEditfunc={this.edit}>
+        passEditfunc={this.edit}
+       passDelfunc={this.delete}>
         </Child>}
       </div>
     );

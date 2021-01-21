@@ -10,7 +10,6 @@ class Child extends React.Component {
           <tr>
             <th>Firstname</th>
             <th>Lastname</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -20,6 +19,8 @@ class Child extends React.Component {
               <td> {item.fname}</td>
               <td>{item.lname}</td>
             <td><button id="editb" onClick={() => {this.props.passEditfunc(index,item.fname,item.lname) }}> Edit</button></td>
+            <td><button  id="delb" onClick={()=>{this.props.passDelfunc(index) }}> Delete</button></td>
+
             </tr> );
         })}
         </tbody>

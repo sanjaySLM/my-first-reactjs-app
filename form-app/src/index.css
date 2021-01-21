@@ -17,6 +17,12 @@ table {
   border-radius: 12px;
   text-align: center;
 }
+#delb{
+  width: 80%;
+  background-color: palevioletred;
+  border-radius: 12px;
+  text-align: center;
+}
 .sty {
   margin: 20px 10px 10px 10px;
   border-radius: 8px;
