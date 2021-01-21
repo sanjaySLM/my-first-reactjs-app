@@ -13,17 +13,18 @@ class App extends React.Component {
     this.childRef= new createRef();
   }
   saving = () => {
+    let newarray = this.state.array;
+
     if(this.state.pos===-1 && this.state.fname !=="" && this.state.lname !==""){
     let obj = { fname: this.state.fname ,lname: this.state.lname  };
-    let newarray = this.state.array;
     newarray.push(obj);
     console.log(this.state.array)
     this.setState({ array: newarray,fname:"",lname:"" });
    }
    else if(this.state.fname !=="" && this.state.lname !=="") {
-this.state.array[this.state.pos].fname=this.state.fname
-this.state.array[this.state.pos].lname=this.state.lname
-this.setState({fname:"",lname:"",pos:-1})
+      newarray[this.state.pos].fname=this.state.fname
+      newarray[this.state.pos].lname=this.state.lname
+      this.setState({array: newarray,fname:"",lname:"",pos:-1})
 }
 else{alert("Enter the Data")}
 }
