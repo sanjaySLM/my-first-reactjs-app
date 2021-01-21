@@ -8,24 +8,25 @@ class App extends React.Component {
       array: [],
       fname:"",
       lname:"",
-      fsave:1
+      pos:-1
     };
     this.childRef= new createRef();
   }
   saving = () => {
-    
-   if (this.state.fsave===1){
+    if(this.state.pos===-1 && this.state.fname !=="" && this.state.lname !==""){
     let obj = { fname: this.state.fname ,lname: this.state.lname  };
     let newarray = this.state.array;
     newarray.push(obj);
-    this.setState({ array: newarray });
-    this.setState({fname:"",lname:""})
     console.log(this.state.array)
+    this.setState({ array: newarray,fname:"",lname:"" });
    }
-   else{
-
-   }
-};
+   else if(this.state.fname !=="" && this.state.lname !=="") {
+this.state.array[this.state.pos].fname=this.state.fname
+this.state.array[this.state.pos].lname=this.state.lname
+this.setState({fname:"",lname:"",pos:-1})
+}
+else{alert("Enter the Data")}
+}
 updatef = (uf) => {this.setState({fname:uf.target.value})}
 updatel = (ul) => {this.setState({lname:ul.target.value})}
 
@@ -33,30 +34,29 @@ edit =(i,fname,lname)=>{
   this.setState({
     fname:fname,
     lname:lname,
-    fsave:1,
+    pos:i,
 })
 }
  render() {
     return (
-      <div>
-        <h1>contact Form</h1>
+      <div >
+        <div id="inputBoxDiv" style={{textAlign:"center"}} >
+        <h1 >Contact Form</h1>
         <label>FIRST NAME:</label>
         <input type="text" id="fname"  value={this.state.fname} onChange={this.updatef} /> <br /><br />
         <label>LAST NAME:</label>
         <input type="text" id="lname"  value={this.state.lname} onChange={this.updatel} /> <br />
-
-        <div><button id="save" onClick={this.saving}>save</button></div>
-        <div><button id="show" onClick={() => { this.setState({ num: 1 });}}>show</button></div>
-        <div><button id="hide" onClick={() => {this.setState({ num: 0 });}}> hide</button></div>
+        <button id="save" className="sty" onClick={this.saving}>save</button>
+        <button id="show" className="sty" onClick={() => { this.setState({ num: 1 });}}>show</button>
+        <button id="hide" className="sty" onClick={() => {this.setState({ num: 0 });}}> hide</button>
+        </div>
 
         {this.state.num === 1 && 
         <Child 
         ref={this.childRef}
         passArr={this.state.array} 
-        passFname={this.state.fname}
-        passEditfunc={this.edit}
-        passsavefunc={this.saving}
-         ></Child>}
+        passEditfunc={this.edit}>
+        </Child>}
       </div>
     );
   }

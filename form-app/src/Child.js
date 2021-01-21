@@ -2,13 +2,6 @@ import React from "react";
 import './index.css';
 
 class Child extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      saveEdited: false,
-    };
-  }
-
   render() {
     return (
       <>

@@ -1,22 +1,37 @@
-th,tr,td {
+th,
+tr,
+td {
   border: 1px solid black;
   text-align: center;
   color: black;
- }
- th {
-   color: darkslategray;
- }
-
+}
 table {
-    margin: 10px 10px 10px 10px;
-    width: 55%;
-    border: 2px solid;
-  }
+  margin: 10px 10px 10px 300px;
+  width: 55%;
+  border: 2px solid;
+}
 
 #editb {
-width: 80%;
-background-color:cadetblue;
-border-radius: 12px;
-text-align: center;
+  width: 80%;
+  background-color: palevioletred;
+  border-radius: 12px;
+  text-align: center;
 }
-  
+.sty {
+  margin: 20px 10px 10px 10px;
+  border-radius: 8px;
+  background-color: palevioletred;
+  width: 90px;
+}
+#fname {
+  border-radius: 8px;
+  width: 200px;
+}
+#lname {
+  border-radius: 8px;
+  width: 200px;
+}
+#inputBoxDiv {
+  margin: 10px 10px 10px 9px;
+  background-color: mistyrose;
+}
