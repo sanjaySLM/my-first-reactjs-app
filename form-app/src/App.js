@@ -1,5 +1,19 @@
-import React, { createRef }  from "react";
-import Child from "./Child";
+ 
+ import React,{createRef} from "react";
+ import Child from "./Child";
+
+
+const setBorder=(ReceiveComp)=>{
+  return(props)=>{
+    return (
+      <div style={{border:"2px", backgroundColor:"red",color:"brown"}}>
+      <ReceiveComp {...props}/>
+      </div>
+    )
+  }
+}
+const FinalComp = setBorder(Child)
+
 
 class App extends React.Component {
   constructor() {
@@ -42,8 +56,13 @@ delete=(dindex)=>{
     this.newArray.splice(dindex,1)
     this.setState({array:this.newArray})
 }
+// shouldComponentUpdate(nextProps, nextState) {
+//   return this.state !== nextState;
+// }
+
 
  render() {
+   
     return (
       <div >
         <div id="inputBoxDiv" style={{textAlign:"center"}} >
@@ -58,12 +77,24 @@ delete=(dindex)=>{
         </div>
 
         {this.state.show === 2 && this.state.num === 1 && 
-        <Child 
+      //   <Child 
+      //   ref={this.childRef}
+      //   passArr={this.state.array} 
+      //   passEditfunc={this.edit}
+      //  passDelfunc={this.delete}>
+      //   </Child>}
+
+
+         <FinalComp 
         ref={this.childRef}
         passArr={this.state.array} 
         passEditfunc={this.edit}
-       passDelfunc={this.delete}>
-        </Child>}
+       passDelfunc={this.delete}></FinalComp> }
+
+
+
+
+
       </div>
     );
   }
