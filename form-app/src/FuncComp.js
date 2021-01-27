@@ -1,17 +1,14 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-const ChildFunc =(props)=>{
-var  [passindex,Updcount]=useState(90)
-
-const numOfCount=()=>{
-    Updcount ( passindex + 1)
-    console.log(passindex)
-}
+const ChildFunc =(data)=>{
+    const {passIndex} = data  
+  
     return(
         <div>
-            <button onClick={numOfCount}>Click</button>
-            count  {passindex}
+         {passIndex}
         </div>
     )
     } 
     export default ChildFunc;
+
+    

@@ -1,4 +1,3 @@
- 
  import React,{createRef} from "react";
  import Child from "./Child";
 
@@ -6,7 +5,7 @@
 const setBorder=(ReceiveComp)=>{
   return(props)=>{
     return (
-      <div style={{border:"2px", backgroundColor:"red",color:"brown"}}>
+      <div style={{border:"2px",color:"brown"}}>
       <ReceiveComp {...props}/>
       </div>
     )
